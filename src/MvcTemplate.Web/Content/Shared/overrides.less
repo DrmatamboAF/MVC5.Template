@@ -1,0 +1,182 @@
+﻿@import "../theme";
+
+/* Bootstrap */
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    background: linear-gradient(@active-from-color, @active-to-color);
+    color: @active-color;
+}
+
+.btn-primary {
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    background: linear-gradient(#84b2ca, #67a0be);
+    border: 1px solid #5997b8;
+
+    &:focus,
+    &:hover,
+    &:active {
+        background: linear-gradient(#75a9c4, #5997b8);
+        border: 1px solid #5997b8;
+    }
+}
+
+.table {
+    margin-bottom: 0;
+
+    > thead > tr > th,
+    > tbody > tr > th,
+    > tfoot > tr > th {
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+}
+
+.table-hover {
+    > tbody > tr:hover > td {
+        background: linear-gradient(@active-from-color, @active-to-color);
+        color: @active-color;
+    }
+}
+
+.input-group .form-control {
+    z-index: 1;
+}
+
+@-ms-viewport {
+    width: auto;
+}
+
+/* JQuery-UI Datepicker */
+.ui-datepicker {
+    padding: 0;
+
+    .ui-datepicker-header {
+        background: linear-gradient(@active-from-color, @active-to-color);
+        border-radius: 3px 3px 0 0;
+        color: @active-color;
+        border: none;
+
+        .ui-state-hover {
+            background: none;
+            cursor: pointer;
+            border: none;
+        }
+
+        .ui-datepicker-prev span {
+            background-image: url(../../Images/JQueryUI/ui-icons_ffffff_256x240.png);
+            background-position: -96px -16px;
+        }
+
+        .ui-datepicker-next span {
+            background-image: url(../../Images/JQueryUI/ui-icons_ffffff_256x240.png);
+            background-position: -32px -16px;
+        }
+    }
+
+    table {
+        margin: 0;
+
+        th {
+            font-size: 10px;
+        }
+
+        tr {
+            &:first-child td {
+                padding-top: 3px;
+            }
+
+            &:last-child td {
+                padding-bottom: 3px;
+            }
+        }
+
+        td {
+            padding-right: 3px;
+
+            &:first-child {
+                padding-left: 3px;
+            }
+
+            .ui-state-default {
+                text-align: center;
+                border-radius: 5px;
+                background: none;
+                border: none;
+            }
+
+            .ui-state-active,
+            .ui-state-hover {
+                background: linear-gradient(@active-from-color, @active-to-color);
+                text-shadow: 1px 0 0 @content-color;
+                color: @active-color;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .ui-timepicker-div {
+        > dl {
+            margin: 0;
+        }
+
+        .ui_tpicker_time {
+            text-align: center;
+            margin: 0 0 5px;
+        }
+
+        .ui_tpicker_time_label,
+        .ui_tpicker_hour_label,
+        .ui_tpicker_minute_label,
+        .ui_tpicker_second_label,
+        .ui_tpicker_millisec_label,
+        .ui_tpicker_timezone_label {
+            display: none;
+        }
+
+        .ui_tpicker_hour,
+        .ui_tpicker_minute,
+        .ui_tpicker_second,
+        .ui_tpicker_millisec,
+        .ui_tpicker_timezone {
+            margin: 0 15px 10px;
+        }
+    }
+}
+
+/* Datalist */
+.datalist-table-body tr:hover .datalist-select-container i::after {
+    color: #9AEA9A;
+}
+
+/* Mvc.Grid */
+.mvc-grid {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.mvc-grid-pager {
+    text-align: center;
+
+    ul {
+        margin: 8px 0 3px;
+    }
+}
+
+.mvc-grid-popup .invalid {
+    border-color: @validation-color;
+
+    &:focus {
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px lighten(@validation-color, 40%);
+        border-color: @validation-color;
+    }
+}
+
+/* JsTree */
+.js-tree-view {
+    padding: 7px 0 3px;
+    display: none;
+}

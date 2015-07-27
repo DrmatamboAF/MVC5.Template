@@ -1,0 +1,141 @@
+﻿@import "../theme";
+
+body.public {
+    .content-container {
+        text-align: center;
+        margin: 50px auto;
+        min-height: 0;
+        width: 330px;
+    }
+
+    .text {
+        text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.6), 0 0 1px rgba(0, 0, 0, 0.3);
+        color: rgba(0, 0, 0, 0.2);
+    }
+
+    .title {
+        font-weight: bold;
+        text-align: right;
+        font-size: 2.5em;
+    }
+
+    .error {
+        font-size: 10em;
+        margin: 20px;
+    }
+
+    .describtion {
+        font-size: 1.2em;
+    }
+
+    .public-action {
+        margin-top: 10px;
+    }
+}
+
+.content-container {
+    background-image: @content-background-image;
+    background-color: @content-background-color;
+    border-radius: 8px 0 0 8px;
+    margin-left: 200px;
+    margin-top: -40px;
+    min-height: 870px;
+    padding-top: 10px;
+
+    &::after,
+    &::before {
+        display: table;
+        content: "";
+    }
+
+    &::after {
+        clear: both;
+    }
+}
+
+.content-breadcrumb {
+    padding-left: 10px;
+    cursor: default;
+
+    > a {
+        color: @content-link-color;
+        display: inline-block;
+        padding: 8px;
+
+        &:hover {
+            color: @active-content-link-color;
+        }
+
+        i {
+            padding-right: 5px;
+        }
+    }
+
+    > span {
+        color: @active-content-link-color;
+    }
+
+    .current,
+    .current:hover {
+        color: @content-color;
+        font-weight: bold;
+    }
+}
+
+.content {
+    padding: 0 5px;
+}
+
+.control-label {
+    padding: 8px 15px 0;
+
+    label {
+        margin-bottom: 6px;
+    }
+
+    .require {
+        color: @validation-color;
+        display: inline-block;
+        min-width: 8px;
+    }
+}
+
+.control-content {
+    input[type="checkbox"] {
+        margin: 12px 0 9px 1px;
+    }
+}
+
+.input-validation-error {
+    border-color: @validation-color;
+
+    &:focus {
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px lighten(@validation-color, 40%);
+        border-color: @validation-color;
+    }
+}
+
+.field-validation-error {
+    color: @validation-color;
+    vertical-align: middle;
+    display: inline-table;
+    padding-top: 11px;
+    height: 34px;
+}
+
+@media (max-width: 767px) {
+    .content-container {
+        margin-left: 45px;
+    }
+
+    .content-breadcrumb {
+        .text {
+            display: none;
+        }
+
+        > a {
+            padding-left: 4px;
+            padding-right: 0;
+        }
+    }
+}

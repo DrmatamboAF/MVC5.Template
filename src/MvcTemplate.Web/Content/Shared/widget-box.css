@@ -1,0 +1,99 @@
+﻿.widget-box {
+  background-color: #fafafa;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.33);
+  border: 1px solid #cdcdcd;
+  margin-bottom: 15px;
+}
+.widget-title {
+  border-bottom: 1px solid #cdcdcd;
+  height: 35px;
+}
+.widget-title .widget-title-icon {
+  border-right: 1px solid #cdcdcd;
+  padding: 11px 11px 8px;
+  line-height: 1.1;
+  float: left;
+}
+.widget-title h5 {
+  padding: 10px 11px 9px;
+  font-weight: bold;
+  float: left;
+  margin: 0;
+}
+.widget-title .widget-title-buttons {
+  float: right;
+}
+.widget-title .widget-title-buttons .btn {
+  border-left: 1px solid #cdcdcd;
+  border-top-style: none;
+  color: #555555;
+  padding: 9px 10px 8px;
+  border-radius: 0;
+  min-width: 40px;
+  font-size: 12px;
+  display: block;
+  float: left;
+}
+.widget-title .widget-title-buttons .btn:hover {
+  background: linear-gradient(#6f93a7, #2a4e62);
+  color: #ffffff;
+}
+.widget-title .widget-title-buttons .btn > i {
+  padding-right: 5px;
+}
+.widget-content .form-group {
+  border-bottom: 1px solid #eeeeee;
+  border-top: 1px solid #ffffff;
+  padding: 10px;
+  margin: 0;
+  zoom: 1;
+}
+.widget-content .form-group:before,
+.widget-content .form-group:after {
+  display: table;
+  content: " ";
+}
+.widget-content .form-group:after {
+  clear: both;
+}
+.widget-content .form-group:last-child {
+  border-bottom: 0;
+}
+.widget-content .form-group textarea,
+.widget-content .form-group .input-group {
+  max-width: 100%;
+  width: 100%;
+}
+.widget-content .control-label {
+  text-align: left;
+}
+.widget-content .form-actions {
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .widget-title .widget-title-buttons .btn > i {
+    padding: 0;
+  }
+  .widget-title .widget-title-buttons .text {
+    display: none;
+  }
+}
+@media (min-width: 992px) {
+  .widget-content .control-label {
+    text-align: right;
+  }
+  .widget-content .control-validation {
+    text-align: center;
+  }
+}
+@media (min-width: 1200px) {
+  .widget-content .field-validation-error {
+    padding-top: 7px;
+  }
+  .widget-content .control-validation {
+    text-align: left;
+  }
+  .widget-content .form-actions {
+    text-align: right;
+  }
+}

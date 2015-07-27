@@ -1,0 +1,26 @@
+﻿@{
+    IEnumerable<MvcSiteMapNode> breadcrumb = MvcSiteMap.Provider.GetBreadcrumb(ViewContext);
+    MvcSiteMapNode current = breadcrumb.LastOrDefault();
+}
+
+<div class="content-breadcrumb">
+    @foreach (MvcSiteMapNode node in breadcrumb)
+    {
+        if (node != current && node.Action != null)
+        {
+            <a href="@Url.Action(node.Action, node.Controller, new { area = node.Area })">
+                <i class="@node.IconClass"></i>
+                <span class="text">@ResourceProvider.GetSiteMapTitle(node.Area, node.Controller, node.Action)</span>
+            </a>
+            <span class="fa fa-angle-right"></span>
+        }
+
+        if (node == current)
+        {
+            <a class="current">
+                <i class="@node.IconClass"></i>
+                <span class="text">@ResourceProvider.GetSiteMapTitle(node.Area, node.Controller, node.Action)</span>
+            </a>
+        }
+    }
+</div>

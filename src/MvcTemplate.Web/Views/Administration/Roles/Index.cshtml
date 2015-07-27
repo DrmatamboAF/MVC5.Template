@@ -1,0 +1,32 @@
+﻿@model IQueryable<RoleView>
+
+<div class="col-xs-12">
+    <div class="widget-box">
+        <div class="widget-title">
+            <span class="widget-title-icon fa fa-th"></span>
+            <h5>@Headers.AdministrationRolesIndex</h5>
+            <div class="widget-title-buttons">
+                @if (Html.IsAuthorizedFor("Create"))
+                {
+                    <a class="btn" href="@Url.Action("Create")">
+                        <i class="fa fa-file-o"></i><span class="text">@Actions.Create</span>
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="widget-content">
+            @(Html
+                .Grid(Model)
+                .Build(columns =>
+                {
+                    columns.AddActionLink("Details", "fa fa-info");
+                    columns.AddActionLink("Edit", "fa fa-pencil");
+                    columns.AddActionLink("Delete", "fa fa-times");
+
+                    columns.AddProperty(model => model.Title);
+                })
+                .ApplyDefaults()
+            )
+        </div>
+    </div>
+</div>

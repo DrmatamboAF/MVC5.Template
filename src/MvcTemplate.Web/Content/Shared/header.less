@@ -1,0 +1,65 @@
+﻿@import "../theme";
+
+.header {
+    min-height: 80px;
+}
+
+.header-navigation {
+    float: right;
+    padding: 0;
+
+    > .btn {
+        min-width: 40px;
+        border: none;
+        padding: 0;
+
+        &.open > a,
+        &:hover > a {
+            background: linear-gradient(@active-from-color, @active-to-color);
+            color: @active-color;
+        }
+
+        > a {
+            text-shadow: 0 0 @color;
+            display: block;
+            padding: 10px;
+            color: @color;
+
+            .fa {
+                margin-right: 5px;
+            }
+
+            .caret {
+                margin-left: 5px;
+            }
+        }
+
+        .dropdown-menu {
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+            margin-top: 0;
+
+            img {
+                margin-bottom: 3px;
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .header-navigation {
+        > .btn > a .fa {
+            margin: 0;
+        }
+
+        .dropdown-menu {
+            left: -120px;
+        }
+
+        .text,
+        .caret {
+            display: none;
+        }
+    }
+}

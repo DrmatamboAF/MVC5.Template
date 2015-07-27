@@ -1,0 +1,90 @@
+﻿.alerts {
+  padding: 10px 0;
+}
+.alerts .alert div {
+  text-align: center;
+}
+form {
+  padding: 0 10px;
+}
+.auth-content {
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px inset, rgba(255, 255, 255, 0.4) 0 1px 0;
+  background-color: #FFFFFF;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+.auth-content div:last-child {
+  border-bottom-style: none;
+}
+.auth-content .input-group {
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 4px 12px;
+  width: 100%;
+}
+.auth-content .input-group .fa {
+  position: absolute;
+  top: 13px;
+}
+.auth-content .input-group .fa.fa-user {
+  left: 14px;
+}
+.auth-content .input-group .fa.fa-lock {
+  left: 15px;
+}
+.auth-content .input-group .fa.fa-globe {
+  left: 13px;
+}
+.auth-content .input-group img {
+  margin-bottom: 3px;
+  margin-right: 5px;
+}
+.auth-content .input-group input {
+  border-style: none;
+  padding-left: 25px;
+  height: 30px;
+  width: 100%;
+}
+.auth-content .input-group input:-webkit-autofill,
+.auth-content .input-group input:-webkit-autofill:focus {
+  box-shadow: 0 50px #FFFFFF inset;
+}
+.auth-content .input-group input:focus {
+  box-shadow: none;
+}
+.auth-content .input-group .dropdown-menu {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-top-style: none;
+  margin-top: 0;
+  right: 16px;
+  left: 16px;
+}
+.auth-content .language-container {
+  padding: 5px 0 0 25px;
+  text-align: left;
+  cursor: pointer;
+  height: 30px;
+}
+.auth-content .language-container .caret {
+  margin-top: 8px;
+  float: right;
+}
+.btn {
+  margin-bottom: 20px;
+  border-radius: 6px;
+  font-size: 1.3em;
+  padding: 10px;
+  width: 100%;
+}
+.auth-actions {
+  text-align: right;
+}
+.auth-actions a {
+  display: inline-block;
+  font-size: 1.8em;
+  padding: 5px;
+}
+.auth-actions a:hover {
+  color: #396b86;
+}

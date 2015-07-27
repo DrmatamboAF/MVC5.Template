@@ -1,0 +1,46 @@
+﻿@import "../theme";
+
+@font-face {
+    src: url("../Fonts/PTSans.woff") format("woff");
+    font-family: 'PT Sans';
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    src: url("../Fonts/PTSans-Bold.woff") format("woff");
+    font-family: "PT Sans";
+    font-style: normal;
+    font-weight: 700;
+}
+
+* {
+    text-decoration: none !important;
+    outline: none !important;
+}
+
+body {
+    font-family: @font-family;
+    color: @content-color;
+
+    &.private {
+        background-image: @background-image;
+        background-color: @background-color;
+    }
+
+    &.public {
+        background-image: @content-background-image;
+        background-color: @content-background-color;
+    }
+}
+
+.separator {
+    border-bottom: 2px solid #F5F5F5;
+    border-top: 2px solid #DDDDDD;
+}
+
+.footer {
+    text-align: center;
+    padding-top: 20px;
+    color: @color;
+}

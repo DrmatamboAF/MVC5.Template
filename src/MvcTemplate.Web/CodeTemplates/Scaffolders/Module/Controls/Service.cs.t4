@@ -1,0 +1,49 @@
+<#@ Template Language="C#" HostSpecific="True" Inherits="DynamicTransform" #>
+<#@ Output Extension="cs" #>
+using MvcTemplate.Data.Core;
+using MvcTemplate.Objects;
+using System;
+using System.Linq;
+
+namespace MvcTemplate.Services
+{
+    public class <#= Model.Service #> : BaseService, <#= Model.IService #>
+    {
+        public <#= Model.Service #>(IUnitOfWork unitOfWork)
+            : base(unitOfWork)
+        {
+        }
+
+        public TView Get<TView>(String id) where TView : BaseView
+        {
+            return UnitOfWork.GetAs<<#= Model.Model #>, TView>(id);
+        }
+        public IQueryable<<#= Model.View #>> GetViews()
+        {
+            return UnitOfWork
+                .Select<<#= Model.Model #>>()
+                .To<<#= Model.View #>>()
+                .OrderByDescending(<#= Model.ModelName #> => <#= Model.ModelName #>.CreationDate);
+        }
+
+        public void Create(<#= Model.View #> view)
+        {
+            <#= Model.Model #> <#= Model.ModelName #> = UnitOfWork.To<<#= Model.Model #>>(view);
+
+            UnitOfWork.Insert(<#= Model.ModelName #>);
+            UnitOfWork.Commit();
+        }
+        public void Edit(<#= Model.View #> view)
+        {
+            <#= Model.Model #> <#= Model.ModelName #> = UnitOfWork.To<<#= Model.Model #>>(view);
+
+            UnitOfWork.Update(<#= Model.ModelName #>);
+            UnitOfWork.Commit();
+        }
+        public void Delete(String id)
+        {
+            UnitOfWork.Delete<<#= Model.Model #>>(id);
+            UnitOfWork.Commit();
+        }
+    }
+}

@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\xunit.runner.visualstudio.2.0.1\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\..\packages\xunit.runner.visualstudio.2.0.1\build\net20\xunit.runner.visualstudio.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BE2D3CAD-747C-4CC3-850B-883420C40EC9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MvcTemplate.Tests</RootNamespace>
+    <AssemblyName>MvcTemplate.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>70ad459a</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="BCrypt.Net, Version=0.1.5073.29922, Culture=neutral, PublicKeyToken=6bcd409ee6bc9292, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\BCrypt-Official.0.1.109\lib\BCrypt.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Datalist, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Datalist.Core.3.4.0\lib\net45\Datalist.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LightInject, Version=3.0.2.7, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LightInject.3.0.2.7\lib\net45\LightInject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LightInject.Mvc">
+      <HintPath>..\..\packages\LightInject.Mvc.1.0.0.4\lib\net45\LightInject.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="LightInject.Web, Version=1.0.0.7, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\LightInject.Web.1.0.0.7\lib\net45\LightInject.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NonFactors.Mvc.Grid, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NonFactors.Grid.Core.Mvc5.2.2.0\lib\net45\NonFactors.Mvc.Grid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NSubstitute, Version=1.8.2.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NSubstitute.1.8.2.0\lib\net45\NSubstitute.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\System.Linq.Dynamic.1.0.4\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="xunit">
+      <HintPath>..\..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.extensions">
+      <HintPath>..\..\packages\xunit.extensions.1.9.2\lib\net20\xunit.extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise />
+  </Choose>
+  <ItemGroup>
+    <Compile Include="Data\Mapping\TestObjectMapper.cs" />
+    <Compile Include="Data\Migrations\201407060959185_Initial.cs" />
+    <Compile Include="Data\Migrations\201407060959185_Initial.Designer.cs">
+      <DependentUpon>201407060959185_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\GlobalizationProviderFactory.cs" />
+    <Compile Include="Helpers\ObjectFactory.cs" />
+    <Compile Include="Data\Migrations\Configuration.cs" />
+    <Compile Include="Objects\Models\AttributesModel.cs" />
+    <Compile Include="Objects\Models\BindersModel.cs" />
+    <Compile Include="Objects\Views\AllTypesView.cs" />
+    <Compile Include="Unit\Components\Extensions\Html\MvcGrid\MvcGridExtensionsTests.cs" />
+    <Compile Include="Unit\Components\Extensions\Html\Page\AuthorizationExtensionsTests.cs" />
+    <Compile Include="Unit\Components\Extensions\Html\Page\ContentExtensionsTests.cs" />
+    <Compile Include="Objects\Models\AdaptersModel.cs" />
+    <Compile Include="Unit\Components\Mvc\Adapters\EqualToAdapterTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Adapters\DigitsAdapterTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Adapters\IntegerAdapterTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Adapters\GreaterThanAdapterTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Adapters\RangeAdapterTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Adapters\MinLengthAdapterTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Adapters\MaxValueAdapterTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Adapters\MinValueAdapterTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Attributes\AreaAttributeTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Attributes\EqualToAttributeTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Attributes\DigitsAttributeTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Attributes\MaxValueAttributeTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Attributes\IntegerAttributeTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Attributes\GreaterThanAttributeTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Attributes\MinValueAttributeTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Providers\DisplayNameMetadataProviderProxy.cs" />
+    <Compile Include="Unit\Components\Security\Authorization\Controllers\Area\AuthorizedController.cs" />
+    <Compile Include="Unit\Components\Security\Authorization\AuthorizeAsAttributeTests.cs" />
+    <Compile Include="Unit\Data\Logging\LoggablePropertyTests.cs" />
+    <Compile Include="Unit\Components\Logging\LoggerTests.cs" />
+    <Compile Include="Unit\Components\Mail\SmtpMailClientTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Adapters\EmailAddressAdapterTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Adapters\StringLengthAdapterTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Attributes\AjaxOnlyAttributeTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Binders\TrimmingModelBinderTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Filters\ExceptionFilterTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Globalization\GlobalizationProviderTests.cs" />
+    <Compile Include="Unit\Components\Mvc\SiteMap\MvcSiteMapParserTests.cs" />
+    <Compile Include="Unit\Components\Mvc\SiteMap\MvcSiteMapProviderTests.cs" />
+    <Compile Include="Unit\Components\Security\Authorization\GlobalizedAuthorizeAttributeTestsProxy.cs" />
+    <Compile Include="Unit\Components\Security\Authorization\GlobalizedAuthorizeAttributeTests.cs" />
+    <Compile Include="Unit\Components\Security\Authorization\Controllers\InheritedAuthorizedController.cs" />
+    <Compile Include="Unit\Components\Security\Authorization\Controllers\InheritedAllowUnauthorizedController.cs" />
+    <Compile Include="Unit\Components\Security\Authorization\Controllers\AllowUnauthorizedController.cs" />
+    <Compile Include="Unit\Components\Security\Authorization\Controllers\AllowAnonymousController.cs" />
+    <Compile Include="Unit\Components\Security\Authorization\Controllers\InheritedAllowAnonymousController.cs" />
+    <Compile Include="Unit\Components\Security\Authorization\Controllers\NotAttributedController.cs" />
+    <Compile Include="Unit\Components\Security\Authorization\Controllers\AuthorizedController.cs" />
+    <Compile Include="Unit\Controllers\AControllerTests.cs" />
+    <Compile Include="Unit\Controllers\ValidatedControllerTests.cs" />
+    <Compile Include="Unit\Data\Migrations\InitialDataTests.cs" />
+    <Compile Include="Objects\Models\TestModel.cs" />
+    <Compile Include="Objects\Views\TestView.cs" />
+    <Compile Include="Data\TestingContext.cs" />
+    <Compile Include="Unit\Components\Extensions\Mvc\ModelStateDictionaryExtensionsTests.cs" />
+    <Compile Include="Unit\Controllers\Administration\Accounts\AccountsControllerTests.cs" />
+    <Compile Include="Unit\Controllers\BaseControllerProxy.cs" />
+    <Compile Include="Unit\Components\Datalists\BaseDatalistProxy.cs" />
+    <Compile Include="Unit\Components\Extensions\Html\Bootstrap\BootstrapModel.cs" />
+    <Compile Include="Unit\Components\Extensions\Html\JsTree\JsTreeView.cs" />
+    <Compile Include="Unit\Resources\ResourcesTests.cs" />
+    <Compile Include="Unit\Services\Administration\Accounts\AccountServiceTests.cs" />
+    <Compile Include="Unit\Services\Administration\Roles\RoleServiceTests.cs" />
+    <Compile Include="Unit\Components\Security\Authorization\AuthorizationProviderTests.cs" />
+    <Compile Include="Unit\Controllers\Auth\AuthControllerTests.cs" />
+    <Compile Include="Unit\Controllers\Administration\AdministrationAreaRegistrationTests.cs" />
+    <Compile Include="Unit\Controllers\Administration\Roles\RolesControllerTests.cs" />
+    <Compile Include="Unit\Controllers\BaseControllerTests.cs" />
+    <Compile Include="Unit\Controllers\Datalist\DatalistControllerTests.cs" />
+    <Compile Include="Unit\Controllers\Home\HomeControllerTests.cs" />
+    <Compile Include="Unit\Controllers\Profile\ProfileControllerTests.cs" />
+    <Compile Include="Unit\Controllers\SecurityTests.cs" />
+    <Compile Include="Unit\Controllers\ServicedControllerTests.cs" />
+    <Compile Include="Unit\Data\Logging\AuditLoggerTests.cs" />
+    <Compile Include="Unit\Data\Logging\LoggableEntityTests.cs" />
+    <Compile Include="Unit\Data\Core\SelectTests.cs" />
+    <Compile Include="Unit\Data\Core\UnitOfWorkTests.cs" />
+    <Compile Include="Unit\Data\Mapping\ObjectMapperTests.cs" />
+    <Compile Include="Helpers\HtmlHelperFactory.cs" />
+    <Compile Include="Helpers\HttpContextFactory.cs" />
+    <Compile Include="Unit\Components\Mvc\Providers\ProviderModel.cs" />
+    <Compile Include="Unit\Components\Alerts\AlertsContainerTests.cs" />
+    <Compile Include="Unit\Components\Datalists\BaseDatalistTests.cs" />
+    <Compile Include="Unit\Components\Extensions\Html\Bootstrap\BootstrapExtensionsTests.cs" />
+    <Compile Include="Unit\Components\Extensions\Html\JsTree\JsTreeExtensionsTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Adapters\RequiredAdapterTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Providers\DataTypeValidatorProviderTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Providers\DisplayNameMetadataProviderTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unit\Components\Mvc\Validators\DateValidatorTests.cs" />
+    <Compile Include="Unit\Components\Mvc\Validators\NumberValidatorTests.cs" />
+    <Compile Include="Unit\Components\Security\Cryptography\BCrypterTests.cs" />
+    <Compile Include="Unit\Services\BaseServiceTests.cs" />
+    <Compile Include="Unit\Objects\Models\BaseModelTests.cs" />
+    <Compile Include="Unit\Components\Extensions\Html\JsTree\JsTreeNodeTests.cs" />
+    <Compile Include="Unit\Components\Extensions\Html\JsTree\JsTreeTests.cs" />
+    <Compile Include="Unit\Objects\Views\Administration\Roles\RoleViewTests.cs" />
+    <Compile Include="Unit\Objects\Views\BaseViewTests.cs" />
+    <Compile Include="Unit\Resources\ResourceProviderTests.cs" />
+    <Compile Include="Unit\Validators\Administration\Accounts\AccountValidatorTests.cs" />
+    <Compile Include="Unit\Validators\Administration\Roles\RoleValidatorTests.cs" />
+    <Compile Include="Unit\Validators\BaseValidatorTests.cs" />
+    <Compile Include="Unit\Web\App_Start\BundleConfigTests.cs" />
+    <Compile Include="Unit\Web\App_Start\DependencyInjection\MainContainerTests.cs" />
+    <Compile Include="Unit\Controllers\RouteConfigTests.cs" />
+    <Compile Include="Unit\Components\Mvc\ViewEngines\ViewEngineTests.cs" />
+    <Compile Include="Unit\Web\MvcApplicationTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\MvcTemplate\MvcTemplate.csproj">
+      <Project>{ddc2aad3-eebd-456f-a0ed-ea3900478b45}</Project>
+      <Name>MvcTemplate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\MvcTemplate.Components\MvcTemplate.Components.csproj">
+      <Project>{4d89de56-c68c-4d17-8424-866d96f2e000}</Project>
+      <Name>MvcTemplate.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\MvcTemplate.Controllers\MvcTemplate.Controllers.csproj">
+      <Project>{8531b9ae-c8c5-4b73-a0ce-b9cdfad69074}</Project>
+      <Name>MvcTemplate.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\MvcTemplate.Data\MvcTemplate.Data.csproj">
+      <Project>{4ec117ab-87ff-4360-bd49-8e29d2d71d89}</Project>
+      <Name>MvcTemplate.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\MvcTemplate.Objects\MvcTemplate.Objects.csproj">
+      <Project>{8a9dc311-3844-4024-a193-8f89b60d1fd8}</Project>
+      <Name>MvcTemplate.Objects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\MvcTemplate.Resources\MvcTemplate.Resources.csproj">
+      <Project>{0bc1938b-b09c-4951-9ccb-13ee2c61d65c}</Project>
+      <Name>MvcTemplate.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\MvcTemplate.Services\MvcTemplate.Services.csproj">
+      <Project>{4ad95521-f99c-4054-a2ad-1fae1dabd72e}</Project>
+      <Name>MvcTemplate.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\MvcTemplate.Validators\MvcTemplate.Validators.csproj">
+      <Project>{02d12b45-ab59-4ac0-8b43-607e4dc282e6}</Project>
+      <Name>MvcTemplate.Validators</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\MvcTemplate.Web\MvcTemplate.Web.csproj">
+      <Project>{b201b326-86eb-4abd-aebb-0dde4c4a5366}</Project>
+      <Name>MvcTemplate.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\Migrations\201407060959185_Initial.resx">
+      <DependentUpon>201407060959185_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\..\packages\xunit.runner.visualstudio.2.0.1\build\net20\xunit.runner.visualstudio.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\xunit.runner.visualstudio.2.0.1\build\net20\xunit.runner.visualstudio.props'))" />
+  </Target>
+  <Import Project="..\..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,36 @@
+﻿@using Links = MvcTemplate.Resources.Views.AccountView.Texts
+@using MvcTemplate.Resources.Views.AccountRegisterView
+
+@model AccountRegisterView
+
+<div class="title text">@ContentTitles.AuthRegister</div>
+<div class="separator"></div>
+
+@using (Html.BeginForm())
+{
+    <input type="password" style="display: none" /> @* Forcing browser to not remember following form inputs *@
+    @Html.Partial("_AuthAlerts")
+
+    @Html.AntiForgeryToken()
+    <div class="auth-content">
+        <div class="input-group">
+            <span class="fa fa-user"></span>
+            @Html.TextBoxFor(model => model.Username, new { autocomplete = "off", placeholder = Titles.Username })
+        </div>
+        <div class="input-group">
+            <span class="fa fa-lock"></span>
+            @Html.PasswordFor(model => model.Password, new { autocomplete = "off", placeholder = Titles.Password })
+        </div>
+        <div class="input-group">
+            <span class="fa fa-envelope"></span>
+            @Html.TextBoxFor(model => model.Email, new { autocomplete = "off", placeholder = Titles.Email })
+        </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="@Actions.Register" />
+}
+
+<div class="separator"></div>
+<div class="auth-actions">
+    <a class="text fa fa-sign-in" href="@Url.Action("Login")" data-toggle="tooltip" data-original-title="@Links.Login" data-placement="bottom"></a>
+    <a class="text fa fa-unlock-alt" href="@Url.Action("Recover")" data-toggle="tooltip" data-original-title="@Links.LostPassword" data-placement="bottom"></a>
+</div>

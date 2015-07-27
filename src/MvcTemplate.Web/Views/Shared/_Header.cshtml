@@ -1,0 +1,41 @@
+﻿<div class="header">
+    <ul class="header-navigation btn-group">
+        <li class="btn">
+            <a href="@Url.Action("Edit", "Profile", new { area = "" })">
+                <i class="fa fa-user"></i>
+                <span class="text">@Actions.Profile</span>
+            </a>
+        </li>
+        @if (GlobalizationManager.Provider.Languages.Length > 1)
+        {
+            String query = (Request.QueryString.Count > 0) ? "?" + Request.QueryString : "";
+            String action = ViewContext.RouteData.Values["action"] as String;
+            String id = ViewContext.RouteData.Values["id"] as String;
+
+            <li class="btn dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" aria-expanded="true">
+                    <i class="fa fa-globe"></i>
+                    <span class="text">@Actions.Language</span>
+                    <span class="caret"></span>
+                </a>
+                <ul role="menu" class="dropdown-menu">
+                    @foreach (Language language in GlobalizationManager.Provider.Languages)
+                    {
+                        <li>
+                            <a href="@(Url.Action(action, new { language = language.Abbreviation, id = id }) + query)">
+                                <img src="@Url.Content(String.Format("~/Images/Flags/{0}.gif", language.Abbreviation))" alt="">
+                                @language.Name
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </li>
+        }
+        <li class="btn">
+            <a href="@Url.Action("Logout", "Auth", new { area = "" })">
+                <i class="fa fa-share"></i>
+                <span class="text">@Actions.Logout</span>
+            </a>
+        </li>
+    </ul>
+</div>

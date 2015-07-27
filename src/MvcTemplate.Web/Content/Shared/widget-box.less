@@ -1,0 +1,130 @@
+﻿@import "../theme";
+
+.widget-box {
+    background-color: lighten(@content-background-color, 3%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.33);
+    border: @content-border;
+    margin-bottom: 15px;
+}
+
+.widget-title {
+    border-bottom: @content-border;
+    height: 35px;
+
+    .widget-title-icon {
+        border-right: @content-border;
+        padding: 11px 11px 8px;
+        line-height: 1.1;
+        float: left;
+    }
+
+    h5 {
+        padding: 10px 11px 9px;
+        font-weight: bold;
+        float: left;
+        margin: 0;
+    }
+
+    .widget-title-buttons {
+        float: right;
+
+        .btn {
+            border-left: @content-border;
+            border-top-style: none;
+            color: @content-color;
+            padding: 9px 10px 8px;
+            border-radius: 0;
+            min-width: 40px;
+            font-size: 12px;
+            display: block;
+            float: left;
+
+            &:hover {
+                background: linear-gradient(@active-from-color, @active-to-color);
+                color: @active-color;
+            }
+
+            > i {
+                padding-right: 5px;
+            }
+        }
+    }
+}
+
+.widget-content {
+    .form-group {
+        border-bottom: @form-group-border-bottom;
+        border-top: @form-group-border-top;
+        padding: 10px;
+        margin: 0;
+        zoom: 1;
+
+        &:before,
+        &:after {
+            display: table;
+            content: " ";
+        }
+
+        &:after {
+            clear: both;
+        }
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        textarea,
+        .input-group {
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+
+    .control-label {
+        text-align: left;
+    }
+
+    .form-actions {
+        text-align: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .widget-title .widget-title-buttons {
+        .btn > i {
+            padding: 0;
+        }
+
+        .text {
+            display: none;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .widget-content {
+        .control-label {
+            text-align: right;
+        }
+
+        .control-validation {
+            text-align: center;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .widget-content {
+        .field-validation-error {
+            padding-top: 7px;
+        }
+
+        .control-validation {
+            text-align: left;
+        }
+
+        .form-actions {
+            text-align: right;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+﻿.alerts {
+  padding: 10px 0;
+}
+.alerts .alert {
+  padding: 8px 15px;
+  margin: 0;
+}
+.alerts .alert + .alert {
+  margin-top: 3px;
+}
+.alerts .alert div {
+  vertical-align: middle;
+  text-align: justify;
+  display: table-cell;
+}
+.alerts .alert .alert-text {
+  padding-right: 10px;
+  width: 100%;
+}

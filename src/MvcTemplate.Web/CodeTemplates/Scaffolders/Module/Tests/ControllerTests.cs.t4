@@ -1,0 +1,243 @@
+<#@ Template Language="C#" HostSpecific="True" Inherits="DynamicTransform" #>
+<#@ Output Extension="cs" #>
+using <#= Model.ControllerNamespace #>;
+using MvcTemplate.Objects;
+using MvcTemplate.Services;
+using MvcTemplate.Validators;
+using NSubstitute;
+using System;
+using System.Linq;
+using System.Web.Mvc;
+using System.Web.Routing;
+using Xunit;
+
+namespace <#= Model.ControllerTestNamespace #>
+{
+    public class <#= Model.Controller #>Tests : AControllerTests
+    {
+        private <#= Model.Controller #> controller;
+        private <#= Model.IValidator #> validator;
+        private <#= Model.IService #> service;
+        private <#= Model.View #> <#= Model.ModelName #>;
+
+        public <#= Model.Controller #>Tests()
+        {
+            validator = Substitute.For<<#= Model.IValidator #>>();
+            service = Substitute.For<<#= Model.IService #>>();
+            <#= Model.ModelName #> = new <#= Model.View #>();
+
+            controller = Substitute.ForPartsOf<<#= Model.Controller #>>(validator, service);
+            controller.ControllerContext = new ControllerContext();
+            controller.ControllerContext.RouteData = new RouteData();
+        }
+
+        #region Method: Index()
+
+        [Fact]
+        public void Index_Gets<#= Model.View #>s()
+        {
+            service.GetViews().Returns(new <#= Model.View #>[0].AsQueryable());
+
+            Object actual = controller.Index().Model;
+            Object expected = service.GetViews();
+
+            Assert.Same(expected, actual);
+        }
+
+        #endregion
+
+        #region Method: Create()
+
+        [Fact]
+        public void Create_ReturnsEmptyView()
+        {
+            Assert.Null(controller.Create().Model);
+        }
+
+        #endregion
+
+        #region Method: Create(<#= Model.View #> <#= Model.ModelName #>)
+
+        [Fact]
+        public void Create_ProtectsFromOverpostingId()
+        {
+            ProtectsFromOverposting(controller, "Create", "Id");
+        }
+
+        [Fact]
+        public void Create_ReturnsSameModelIfCanNotCreate()
+        {
+            validator.CanCreate(<#= Model.ModelName #>).Returns(false);
+
+            Object actual = (controller.Create(<#= Model.ModelName #>) as ViewResult).Model;
+            Object expected = <#= Model.ModelName #>;
+
+            Assert.Same(expected, actual);
+        }
+
+        [Fact]
+        public void Create_Creates<#= Model.View #>()
+        {
+            validator.CanCreate(<#= Model.ModelName #>).Returns(true);
+
+            controller.Create(<#= Model.ModelName #>);
+
+            service.Received().Create(<#= Model.ModelName #>);
+        }
+
+        [Fact]
+        public void Create_AfterCreateRedirectsToIndexIfAuthorized()
+        {
+            controller.RedirectIfAuthorized("Index").Returns(new RedirectToRouteResult(new RouteValueDictionary()));
+            validator.CanCreate(<#= Model.ModelName #>).Returns(true);
+
+            ActionResult expected = controller.RedirectIfAuthorized("Index");
+            ActionResult actual = controller.Create(<#= Model.ModelName #>);
+
+            Assert.Same(expected, actual);
+        }
+
+        #endregion
+
+        #region Method: Details(String id)
+
+        [Fact]
+        public void Details_OnModelNotFoundRedirectsToNotFound()
+        {
+            controller.When(sub => sub.RedirectToNotFound()).DoNotCallBase();
+            controller.RedirectToNotFound().Returns(new RedirectToRouteResult(new RouteValueDictionary()));
+
+            Object expected = controller.RedirectToNotFound();
+            Object actual = controller.Details("");
+
+            Assert.Same(expected, actual);
+        }
+
+        [Fact]
+        public void Details_Gets<#= Model.View #>()
+        {
+            service.Get<<#= Model.View #>>(<#= Model.ModelName #>.Id).Returns(<#= Model.ModelName #>);
+
+            Object actual = (controller.Details(<#= Model.ModelName #>.Id) as ViewResult).Model;
+            Object expected = <#= Model.ModelName #>;
+
+            Assert.Same(expected, actual);
+        }
+
+        #endregion
+
+        #region Method: Edit(String id)
+
+        [Fact]
+        public void Edit_OnModelNotFoundRedirectsToNotFound()
+        {
+            controller.When(sub => sub.RedirectToNotFound()).DoNotCallBase();
+            controller.RedirectToNotFound().Returns(new RedirectToRouteResult(new RouteValueDictionary()));
+
+            ActionResult expected = controller.RedirectToNotFound();
+            ActionResult actual = controller.Edit("");
+
+            Assert.Same(expected, actual);
+        }
+
+        [Fact]
+        public void Edit_Gets<#= Model.View #>()
+        {
+            service.Get<<#= Model.View #>>(<#= Model.ModelName #>.Id).Returns(<#= Model.ModelName #>);
+
+            Object actual = (controller.Edit(<#= Model.ModelName #>.Id) as ViewResult).Model;
+            Object expected = <#= Model.ModelName #>;
+
+            Assert.Same(expected, actual);
+        }
+
+        #endregion
+
+        #region Method: Edit(<#= Model.View #> <#= Model.ModelName #>)
+
+        [Fact]
+        public void Edit_ReturnsSameModelIfCanNotEdit()
+        {
+            validator.CanEdit(<#= Model.ModelName #>).Returns(false);
+
+            Object actual = (controller.Edit(<#= Model.ModelName #>) as ViewResult).Model;
+            Object expected = <#= Model.ModelName #>;
+
+            Assert.Same(expected, actual);
+        }
+
+        [Fact]
+        public void Edit_Edits<#= Model.View #>()
+        {
+            validator.CanEdit(<#= Model.ModelName #>).Returns(true);
+
+            controller.Edit(<#= Model.ModelName #>);
+
+            service.Received().Edit(<#= Model.ModelName #>);
+        }
+
+        [Fact]
+        public void Edit_AfterEditRedirectsToIndexIfAuthorized()
+        {
+            controller.RedirectIfAuthorized("Index").Returns(new RedirectToRouteResult(new RouteValueDictionary()));
+            validator.CanEdit(<#= Model.ModelName #>).Returns(true);
+
+            ActionResult expected = controller.RedirectIfAuthorized("Index");
+            ActionResult actual = controller.Edit(<#= Model.ModelName #>);
+
+            Assert.Same(expected, actual);
+        }
+
+        #endregion
+
+        #region Method: Delete(String id)
+
+        [Fact]
+        public void Delete_OnModelNotFoundRedirectsToNotFound()
+        {
+            controller.When(sub => sub.RedirectToNotFound()).DoNotCallBase();
+            controller.RedirectToNotFound().Returns(new RedirectToRouteResult(new RouteValueDictionary()));
+
+            ActionResult expected = controller.RedirectToNotFound();
+            ActionResult actual = controller.Delete("");
+
+            Assert.Same(expected, actual);
+        }
+
+        [Fact]
+        public void Delete_Gets<#= Model.View #>()
+        {
+            service.Get<<#= Model.View #>>(<#= Model.ModelName #>.Id).Returns(<#= Model.ModelName #>);
+
+            Object actual = (controller.Delete(<#= Model.ModelName #>.Id) as ViewResult).Model;
+            Object expected = <#= Model.ModelName #>;
+
+            Assert.Same(expected, actual);
+        }
+
+        #endregion
+
+        #region Method: DeleteConfirmed(String id)
+
+        [Fact]
+        public void DeleteConfirmed_Deletes<#= Model.View #>()
+        {
+            controller.DeleteConfirmed(<#= Model.ModelName #>.Id);
+
+            service.Received().Delete(<#= Model.ModelName #>.Id);
+        }
+
+        [Fact]
+        public void Delete_AfterDeleteRedirectsToIndexIfAuthorized()
+        {
+            controller.RedirectIfAuthorized("Index").Returns(new RedirectToRouteResult(new RouteValueDictionary()));
+
+            ActionResult actual = controller.DeleteConfirmed(<#= Model.ModelName #>.Id);
+            ActionResult expected = controller.RedirectIfAuthorized("Index");
+
+            Assert.Same(expected, actual);
+        }
+
+        #endregion
+    }
+}

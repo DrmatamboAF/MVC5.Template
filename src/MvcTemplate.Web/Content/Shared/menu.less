@@ -1,0 +1,148 @@
+﻿@import "../theme";
+
+.menu {
+    width: 200px;
+    float: left;
+
+    .menu-search {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+        margin: 10px;
+
+        input {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            border-style: none;
+            text-align: center;
+            color: @color;
+            padding: 3px;
+            width: 100%;
+        }
+    }
+
+    ul {
+        padding: 0;
+
+        :not(.open) > ul {
+            display: none;
+        }
+
+        a {
+            padding: 10px 0 10px 15px;
+            display: block;
+            color: @color;
+
+            &:hover {
+                background: linear-gradient(@active-from-color, @active-to-color);
+                color: @active-color;
+            }
+
+            .menu-icon {
+                text-align: center;
+                width: 20px;
+            }
+        }
+
+        li {
+            position: relative;
+
+            ul {
+                list-style: none;
+                z-index: 2;
+
+                li {
+                    background-image: @background-image;
+                }
+
+                a {
+                    background-color: rgba(0, 0, 0, 0.15);
+                    padding: 10px 0 10px 25px;
+                }
+
+                ul a {
+                    background-color: rgba(0, 0, 0, 0.3);
+                    padding: 10px 0 10px 35px;
+                }
+            }
+        }
+
+        .arrow {
+            transition: transform 0.4s ease-out 0.1s;
+            margin: 6px 15px 5px 5px;
+            font-size: 10px;
+            float: right;
+        }
+
+        .open:not(.changing) > a > .arrow,
+        .changing:not(.open) > a > .arrow {
+            transform: rotate(90deg);
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .menu > ul:not(:hover) .active > a {
+        background-image: url("../../Images/Shared/menu-active.png"), linear-gradient(@active-from-color, @active-to-color);
+        background-position: right center;
+        background-repeat: no-repeat;
+        color: @active-color;
+    }
+}
+
+@media (max-width: 767px) {
+    .menu {
+        width: 45px;
+
+        .menu-search {
+            display: none;
+        }
+
+        > ul {
+            &:not(:hover) > .has-active > a {
+                background-image: url("../../Images/Shared/menu-active.png"), linear-gradient(@active-from-color, @active-to-color);
+                background-position: right center;
+                background-repeat: no-repeat;
+                color: @active-color;
+            }
+
+            .menu-icon {
+                width: 10px;
+            }
+
+            .arrow,
+            > li > a > span {
+                display: none;
+            }
+
+            > li {
+                > a {
+                    text-align: center;
+                    padding-left: 0;
+                }
+
+                ul {
+                    position: absolute;
+                    width: 100px;
+                    left: 45px;
+                    top: 0;
+
+                    a {
+                        font-size: 10px;
+                        padding: 6px;
+                    }
+
+                    ul {
+                        left: 100px;
+
+                        .active > a {
+                            background-image: none;
+                        }
+
+                        a {
+                            padding: 6px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

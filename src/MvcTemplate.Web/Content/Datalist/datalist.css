@@ -1,0 +1,204 @@
+﻿/*!
+ * Datalist 3.4.0
+ * https://github.com/NonFactors/MVC.Datalist
+ *
+ * Copyright © NonFactors
+ *
+ * Licensed under the terms of the MIT License
+ * http://www.opensource.org/licenses/mit-license.php
+ */
+
+.ui-dialog,
+.ui-dialog:after,
+.ui-dialog:before {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    width: 100%;
+}
+
+.datalist {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    display: none;
+}
+
+.datalist-open-span {
+    cursor: pointer;
+}
+
+.datalist.ui-dialog-content {
+    min-width: 425px;
+    display: none;
+}
+
+.datalist-search-group {
+    margin: 5px 5px 10px;
+    height: 32px;
+}
+
+    .datalist-search-group .datalist-search-box {
+        margin-right: -55px;
+        height: 100%;
+        width: 100%;
+        float: left;
+    }
+
+    .datalist-search-group .datalist-search-box-content {
+        margin-right: 55px;
+        height: 100%;
+    }
+
+    .datalist-search-group .datalist-spinner-box {
+        height: 100%;
+        float: right;
+        width: 55px;
+    }
+
+        .datalist-search-group .datalist-spinner-box > span {
+            height: 100%;
+        }
+
+    .datalist-search-group .datalist-search-input {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        padding-top: 6px;
+        font-size: 15px;
+        height: 100%;
+    }
+
+    .datalist-search-group .datalist-items-per-page {
+        background-color: #EEEEEE;
+        padding-right: 16px;
+        text-align: center;
+        color: #555555;
+        display: block;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+    }
+
+    .datalist-search-group span {
+        border-bottom-color: #CCCCCC;
+        border-bottom-left-radius: 0;
+        border-top-color: #CCCCCC;
+        border-top-left-radius: 0;
+        border-right: medium none;
+        border-left: 0 none;
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+
+        .datalist-search-group span a:first-of-type {
+            border-right: 1px solid #CCCCCC;
+            border-left: 1px solid #CCCCCC;
+            cursor: pointer;
+        }
+
+        .datalist-search-group span a:last-of-type {
+            border-right: 1px solid #CCCCCC;
+            border-left: 1px solid #CCCCCC;
+            border-top: 1px solid #CCCCCC;
+            cursor: pointer;
+        }
+
+.datalist-processing {
+    background: url('data:image/gif;base64,R0lGODlhEAAQAPMPAJycnBQUFODg4L6+vnp6egAAAFhYWDY2NoqKivDw8CQkJGhoaEZGRqysrAQEBP///yH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAPACwAAAAAEAAQAAAEcfDJl+gydeonlEhFIVCbJBRK4ojJqAkjUiArnEkJM4OOYXymjEDnGLhwQFyicTjiNAiGD1CiJK5RBoNaul6tA8ItqEkgAgxnyzghKABmBEzQoLA5I8Fh0AAI5E8TCQYEDwBUAnAlAgQjhxIDYyUDA1URACH5BAUKAA8ALAAAAAAPABAAAARd8Mn5yJKJTiaVFEGjSUeiOIJSDKMEKAFQcJMRJ8FhFUWWSYbCQTAZEFu01qOxIBBYygfAsFhAox/A6DdpMAxbwQ/BaCQADYH6KNYsBAPzVUPQxiVzDCBzfxyVaiMRACH5BAUKAA8ALAAAAAAQAA8AAARa8Mn5AKJYLslUSkcmOUbSJYaYVEXTNZMwSMTRgAyCHIWAFD1NIBUDAAuzyWCxUhYukoEOIMh8rg2CVsR9wLqUBaLZBRAGiQH6qpIgBPCEgIwBzOAPOfeLz1MiACH5BAUKAA8ALAAAAAAQABAAAARc8MkpAb2SpGeYNAP2HATnLdgmBUMXookgIYvMEADgJVagEqSH6jFQiB4liqyW2AAaDdEiEHCAcgDZZVHoHiihi2AsUAkQluNkkH2M1UJJYtAcHgeyJtwtt8P1GBEAIfkEBQoACAAsAAAAABAADgAABEUQyYkIoVgaWQrP3NYhASgRXgeQmBEMSHFYXhVPRrFh9UrtmMNEgAD4gp1CyXLJlD5DzECWOU6mHSJCa0pmuJQBUAIGRQAAIfkEBQoADgAsAAAAABAAEAAABGvQyenGoNilJhGRhJAlBIcgDqKImbAIpxCg1NCICGARR6UwksQAMUhMEgKD48CSCDiUBANg1AiuVQrAYGAgrtgMQKEILKIYwQGAQTYdTwkwKDAmqoFC0hHIZhoFSg5QaBMKBRcjaQVsGY5+EQAh+QQFCgAPACwAAAAAEAAQAAAEW/DJ+YSgWA4JAM/c1XgAA0pIMj5Mg1nJ0wwWsEjMLQl0tgQGTOKCWbgmiSSosVgEk8pMg3E4EE4TQyOK3TwWMRBhoXgkbodToIB4XHmgxJpIjDsKF8cxbjiEKREAIfkEBQoADgAsAQABAA8ADwAABFbQSSHHkE3qWu9Y2+Zdy+UkpyZQTkM4goFIiYCGxPFu94aYoeCAQMwENR+D7EgrBWusmsKx2xQKCARjOmP4CgSFAuCYhQRXSiBxODYKl8DaoQCqNIZjBAAh+QQFCgAPACwAAAAAEAAQAAAEXfDJ+VKiWN4nhBwbJlwdB4RU4nUJ4mGbZQ2NhAAZDCx4jgEvH0WAKAonAoKy9lEMMK4ho1DoTRgBhMZROHgUgMaC8QAoFhLA03Y41HrBiSLRfhgcPsf3ICHnNko5EQAh+QQFCgAOACwAAAEAEAAPAAAEWtDJ6VKSgmpp5dha922ZJpTACE4NMlxUSanOEtwL2OzDUfwMEADgSpwAAZkEsHK8JonFgSlR1BIKRsOBMDgNBElDBjAwBoEtTHNwmB2E9mZgdTCCNeUGgQBFAAAh+QQFCgAPACwAAAEAEAAPAAAEWPDJSV+qeCZRBcfCRRUFUonJ8A1k8U2CWhFF04mSomfP4AsGRyBAyPgan0SDgbFVDJKXBLFwPg6PIsPgAywkBIBkIBE3CAsBlhdgoh8AJki+gCaKvLIYEwEAIfkEBQoADwAsAAABAA8ADwAABFrwyRGEvPiOorKXRtF8UvcIReEJyWkC45WwGOAMWSshB8MgnplAQFAYgbmhpTUweHAywiPgaSCgTuCCMGwATrDTJDBASBeWh059WDzMjwZhfXG/pY8vKR7DRAAAOw==') no-repeat center;
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    position: absolute;
+    text-align: center;
+    min-height: 50px;
+    min-width: 50px;
+    display: none;
+    left: 44%;
+    top: 44%;
+}
+
+.datalist-error-container {
+    text-align: center;
+    margin: 30px 5px 0;
+}
+
+.datalist-error {
+    text-align: center;
+}
+
+.datalist-data {
+    height: auto;
+    margin: 5px;
+}
+
+.datalist-table {
+    margin-bottom: 0;
+}
+
+    .datalist-table tr {
+        cursor: pointer;
+    }
+
+    .datalist-table .datalist-header-title {
+        vertical-align: sub;
+    }
+
+    .datalist-table .datalist-sort-arrow {
+        display: inline-block;
+        vertical-align: top;
+        text-align: end;
+        min-width: 10px;
+    }
+
+        .datalist-table .datalist-sort-arrow.asc::after {
+            content: "\2193";
+        }
+
+        .datalist-table .datalist-sort-arrow.desc::after {
+            content: "\2191";
+        }
+
+    .datalist-table thead > tr > th,
+    .datalist-table tbody > tr > td {
+        font-size: 0.9em;
+        padding: 4px 8px;
+    }
+
+    .datalist-table .datalist-select-cell {
+        padding: 0;
+    }
+
+.datalist-select-header,
+.datalist-select-cell {
+    text-align: center;
+    width: 35px;
+}
+
+.datalist-select-container {
+    font-weight: bold;
+    padding: 4px 8px;
+}
+
+    .datalist-select-container i::after {
+        font-style: normal;
+        content: "\25CF";
+        color: #777777;
+    }
+
+.datalist-table-body tr:hover .datalist-select-container i::after {
+    font-style: normal;
+    content: "\2714";
+    color: #5CB85C;
+}
+
+.datalist-pager .pagination {
+    margin: 5px 5px 0 0;
+    float: right;
+}
+
+    .datalist-pager .pagination > li {
+        cursor: pointer;
+    }
+
+        .datalist-pager .pagination > li > a {
+            padding: 2px 8px;
+        }

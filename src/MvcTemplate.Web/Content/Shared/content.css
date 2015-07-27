@@ -1,0 +1,108 @@
+﻿body.public .content-container {
+  text-align: center;
+  margin: 50px auto;
+  min-height: 0;
+  width: 330px;
+}
+body.public .text {
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.6), 0 0 1px rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.2);
+}
+body.public .title {
+  font-weight: bold;
+  text-align: right;
+  font-size: 2.5em;
+}
+body.public .error {
+  font-size: 10em;
+  margin: 20px;
+}
+body.public .describtion {
+  font-size: 1.2em;
+}
+body.public .public-action {
+  margin-top: 10px;
+}
+.content-container {
+  background-image: url("../../Images/Shared/content-background.jpg");
+  background-color: #f2f2f2;
+  border-radius: 8px 0 0 8px;
+  margin-left: 200px;
+  margin-top: -40px;
+  min-height: 870px;
+  padding-top: 10px;
+}
+.content-container::after,
+.content-container::before {
+  display: table;
+  content: "";
+}
+.content-container::after {
+  clear: both;
+}
+.content-breadcrumb {
+  padding-left: 10px;
+  cursor: default;
+}
+.content-breadcrumb > a {
+  color: #999999;
+  display: inline-block;
+  padding: 8px;
+}
+.content-breadcrumb > a:hover {
+  color: #777777;
+}
+.content-breadcrumb > a i {
+  padding-right: 5px;
+}
+.content-breadcrumb > span {
+  color: #777777;
+}
+.content-breadcrumb .current,
+.content-breadcrumb .current:hover {
+  color: #555555;
+  font-weight: bold;
+}
+.content {
+  padding: 0 5px;
+}
+.control-label {
+  padding: 8px 15px 0;
+}
+.control-label label {
+  margin-bottom: 6px;
+}
+.control-label .require {
+  color: #d11919;
+  display: inline-block;
+  min-width: 8px;
+}
+.control-content input[type="checkbox"] {
+  margin: 12px 0 9px 1px;
+}
+.input-validation-error {
+  border-color: #d11919;
+}
+.input-validation-error:focus {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #f7bfbf;
+  border-color: #d11919;
+}
+.field-validation-error {
+  color: #d11919;
+  vertical-align: middle;
+  display: inline-table;
+  padding-top: 11px;
+  height: 34px;
+}
+@media (max-width: 767px) {
+  .content-container {
+    margin-left: 45px;
+  }
+  .content-breadcrumb .text {
+    display: none;
+  }
+  .content-breadcrumb > a {
+    padding-left: 4px;
+    padding-right: 0;
+  }
+}

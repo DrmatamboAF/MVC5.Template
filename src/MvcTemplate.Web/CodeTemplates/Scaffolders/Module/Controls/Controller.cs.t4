@@ -1,0 +1,88 @@
+<#@ Template Language="C#" HostSpecific="True" Inherits="DynamicTransform" #>
+<#@ Output Extension="cs" #>
+<# if (Model.Area != null && Model.Area != "") { #>
+using MvcTemplate.Components.Mvc;
+<# } #>
+using MvcTemplate.Objects;
+using MvcTemplate.Services;
+using MvcTemplate.Validators;
+using System;
+using System.Web.Mvc;
+
+namespace <#= Model.ControllerNamespace #>
+{
+<# if (Model.Area != null && Model.Area != "") { #>
+    [Area("<#= Model.Area #>")]
+<# } #>
+    public class <#= Model.Controller #> : ValidatedController<<#= Model.IValidator #>, <#= Model.IService #>>
+    {
+        public <#= Model.Controller #>(<#= Model.IValidator #> validator, <#= Model.IService #> service)
+            : base(validator, service)
+        {
+        }
+
+        [HttpGet]
+        public ViewResult Index()
+        {
+            return View(Service.GetViews());
+        }
+
+        [HttpGet]
+        public ViewResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Exclude = "Id")] <#= Model.View #> <#= Model.ModelName #>)
+        {
+            if (!Validator.CanCreate(<#= Model.ModelName #>))
+                return View(<#= Model.ModelName #>);
+
+            Service.Create(<#= Model.ModelName #>);
+
+            return RedirectIfAuthorized("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Details(String id)
+        {
+            return NotEmptyView(Service.Get<<#= Model.View #>>(id));
+        }
+
+        [HttpGet]
+        public ActionResult Edit(String id)
+        {
+            return NotEmptyView(Service.Get<<#= Model.View #>>(id));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(<#= Model.View #> <#= Model.ModelName #>)
+        {
+            if (!Validator.CanEdit(<#= Model.ModelName #>))
+                return View(<#= Model.ModelName #>);
+
+            Service.Edit(<#= Model.ModelName #>);
+
+            return RedirectIfAuthorized("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(String id)
+        {
+            return NotEmptyView(Service.Get<<#= Model.View #>>(id));
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(String id)
+        {
+            Service.Delete(id);
+
+            return RedirectIfAuthorized("Index");
+        }
+    }
+}

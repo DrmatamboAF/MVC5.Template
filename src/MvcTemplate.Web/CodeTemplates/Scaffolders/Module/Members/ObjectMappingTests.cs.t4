@@ -1,0 +1,29 @@
+<#@ Template Language="C#" HostSpecific="True" Inherits="DynamicTransform" #>
+<#@ Output Extension="cs" #>
+#region Static method: Map<#= Model.Models #>()
+
+[Fact]
+public void Map<#= Model.Models #>_Maps<#= Model.Model #>To<#= Model.View #>()
+{
+    <#= Model.Model #> expected = ObjectFactory.Create<#= Model.Model #>();
+    <#= Model.View #> actual = Mapper.Map<<#= Model.View #>>(expected);
+
+    Assert.Equal(expected.CreationDate, actual.CreationDate);
+    Assert.Equal(expected.Id, actual.Id);
+
+    Assert.True(false, "Not all properties tested");
+}
+
+[Fact]
+public void Map<#= Model.Models #>_Maps<#= Model.View #>To<#= Model.Model #>()
+{
+    <#= Model.View #> expected = ObjectFactory.Create<#= Model.View #>();
+    <#= Model.Model #> actual = Mapper.Map<<#= Model.Model #>>(expected);
+
+    Assert.Equal(expected.CreationDate, actual.CreationDate);
+    Assert.Equal(expected.Id, actual.Id);
+
+    Assert.True(false, "Not all properties tested");
+}
+
+#endregion

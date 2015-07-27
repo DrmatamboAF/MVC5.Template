@@ -1,0 +1,61 @@
+﻿<!doctype html>
+<html lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@(ViewBag.Title ?? ResourceProvider.GetContentTitle(ViewContext.RouteData.Values))</title>
+
+    @Styles.Render("~/Content/JQueryUI/Bundle")
+    @Styles.Render("~/Content/Bootstrap/Bundle")
+    @Styles.Render("~/Content/FontAwesome/Bundle")
+    @Styles.Render("~/Content/MvcGrid/Bundle")
+    @Styles.Render("~/Content/JsTree/Bundle")
+    @Styles.Render("~/Content/Datalist/Bundle")
+    @Styles.Render("~/Content/Shared/Bundle")
+    @Html.RenderControllerStyle()
+</head>
+<body class="private">
+    @Html.Partial("_Header")
+    @Html.Partial("_Datalist")
+    <div class="menu">
+        <div class="menu-search">
+            @Html.TextBox("MenuSearchInput", null, new { placeholder = Actions.Search + "..." })
+        </div>
+        @Html.Partial("_SiteMap", MvcSiteMap.Provider.GetAuthorizedMenus(ViewContext))
+    </div>
+    <div class="content-container">
+        <div class="separator"></div>
+
+        @Html.Partial("_Breadcrumb")
+
+        <div class="separator"></div>
+
+        <div class="container-fluid">
+            <div class="content row">
+                @Html.Partial("_Alerts")
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        @DateTime.Now.Year &copy; All rights reserved.
+    </div>
+
+    @Scripts.Render("~/Scripts/JQuery/Bundle")
+    @Scripts.Render("~/Scripts/JQueryUI/Bundle")
+    @Scripts.Render("~/Scripts/Bootstrap/Bundle")
+    @Scripts.Render("~/Scripts/MvcGrid/Bundle")
+    @Scripts.Render("~/Scripts/JsTree/Bundle")
+    @Scripts.Render("~/Scripts/Datalist/Bundle")
+
+    <script src="~/Scripts/JQuery/Cultures/globalize.culture.@(UICulture).js"></script>
+    <script src="~/Scripts/JQueryUI/Cultures/datepicker.culture.@(UICulture).js"></script>
+    <script src="~/Scripts/Datalist/Cultures/datalist.culture.@(UICulture).js"></script>
+    <script src="~/Scripts/MvcGrid/Cultures/mvc-grid.culture.@(UICulture).js"></script>
+
+    @Html.RenderControllerScript()
+    @Scripts.Render("~/Scripts/Shared/Bundle")
+</body>
+</html>

@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+}
+
+<div class="title text">@ContentTitles.HomeUnauthorized</div>
+
+<div class="separator"></div>
+
+<div class="error text fa fa-lock"></div>
+
+<div class="separator"></div>
+
+<div class="describtion text">@SharedTexts.Unauthorized</div>
+@Html.ActionLink(ContentTitles.HomeIndex, "Index", null, new { @class = "btn btn-primary public-action" })

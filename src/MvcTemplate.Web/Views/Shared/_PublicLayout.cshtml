@@ -1,0 +1,26 @@
+﻿<!doctype html>
+<html lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@(ViewBag.Title ?? ResourceProvider.GetContentTitle(ViewContext.RouteData.Values))</title>
+
+    @Styles.Render("~/Content/Bootstrap/Bundle")
+    @Styles.Render("~/Content/FontAwesome/Bundle")
+    @Styles.Render("~/Content/Shared/Bundle")
+    @Html.RenderControllerStyle()
+</head>
+<body class="public">
+    <div class="content-container">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/Scripts/JQuery/Bundle")
+    @Scripts.Render("~/Scripts/Bootstrap/Bundle")
+
+    @Html.RenderControllerScript()
+    @Scripts.Render("~/Scripts/Shared/Bundle")
+</body>
+</html>
